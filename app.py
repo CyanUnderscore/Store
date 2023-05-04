@@ -10,9 +10,6 @@ def home():
 def contact():
     return render_template('contact.html')
 
-@app.route('/products')
-def home():
-    return render_template('home.html')
 
 @app.route('/products')
 def products():
@@ -29,4 +26,4 @@ def product_detailed(id):
     return render_template('product.detailed.html', product=product_info)
 
 if __name__ == '__main__':
-    app.run(debug=true)
+    app.run(debug=True)
