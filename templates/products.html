@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Nos Produits</h1>
+<ul>
+    {% for product in products %}
+    <li>
+        <a href="{{ url_for('product_detail', id=product['id']) }}">{{ product['name'] }}</a>
+        <br>
+        {{ product['description']}}
+        <br>
+        Prix : {{ product['price'] }} euro
+        <br>
+        Categorie : {{ product['category'] }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

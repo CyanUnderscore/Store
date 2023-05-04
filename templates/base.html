@@ -1,1 +1,21 @@
-
+<!DOCTYPE html>
+<html>
+    <head><title>Mon site vitrine</title></head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Acceuil</a></li>
+                    <li><a href="/products">Produits</a></li>
+                    <li><a href="/contact"></a>Contact</li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        <footer>
+            <p>Tous droits reserves</p>
+        </footer>
+    </body>
+</html>
