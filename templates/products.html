@@ -1,17 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Nos Produits</h1>
-<ul>
+<table style="border-spacing: 20px;">
     {% for product in products %}
-    <li>
-        <a href="{{ url_for('product_detailed', id=product['id']) }}">{{ product['name'] }}</a>
-        <br>
-        {{ product['description']}}
-        <br>
-        Prix : {{ product['price'] }} euro
-        <br>
-        Categorie : {{ product['category'] }}
-    </li>
+    <tr>
+        <td style="border: 5px solid rgb(255, 255, 255);">
+            <img src="{{ product['image'] }}" style="height: 20%; width: 20%; float: left;">
+        <div>
+            <a href="{{ url_for('product_detailed', id=product['id']) }}">{{ product['name'] }}</a>
+            <br>
+            <span style="margin-left: 5px;margin-top: 10px;">{{ product['description']}}</span>
+            <br>
+            <span style="margin-left: 5px; margin-top: 10px;">Prix : {{ product['price'] }} euro</span>
+            <br>
+            <span style="margin-left: 5px;margin-top: 10px;">Categorie : {{ product['category'] }}</span>
+        </div>
+        </td>
+    </tr>
     {% endfor %}
-</ul>
+</table>
 {% endblock %}
