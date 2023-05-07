@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Nos Produits</h1>
+<form action="{{ url_for('filter_product') }}" method="post">
+    <label for="category">Categorie :</label>
+    <select name="category" id="category">
+        <option value="">Tous</option>
+        <option value="cube">cube</option>
+        <option value="sphere">sphere</option>
+    </select>
+    <input type="submit" value="Filter">
+</form>
 <table style="border-spacing: 20px;">
     {% for product in products %}
     <tr>

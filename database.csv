@@ -1,3 +1,5 @@
 id,name,description,price,image,score,category
-1,Object 1,c’est une boite avecle numero 1 dessus,10,/static/cube.png,5,cube
-2,Object 2,c’est une balle avecle numéro 2 dessus,5,/static/sphere.png,4.5,balle
+1,cube bleu, un cube bleu d’arréte 4cm qui est trés pratique si on a besion de cube bleu,10,/static/cube.png,5,cube
+2,sphere transparente,c’est une balle avecle numéro 2 dessus,5,/static/sphere.png,4.5,sphere
+3,Cube d’Escher,Un cube qui casse votre cerveau et les loi de la physique,25,/static/EscherCube.png,4.8,cube
+4,Balle d’illusion,voyer le monde sous un nouvel angle,45,/static/illBall.png,4.7,sphere
