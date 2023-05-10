@@ -5,7 +5,17 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    #get the num
+    file = open("site.csv", "r")
+    content = file.readline()
+    file.close()
+    # clear
+    file = open("site.csv", "w")
+    visit_num = int(content) + 1
+    #change
+    file.write(str(visit_num))
+    file.close
+    return render_template('home.html', visit_num=visit_num)
 
 @app.route('/contact')
 def contact():
@@ -23,6 +33,43 @@ def submit_contact():
         writer.writerow([name, email, message])
 
     return redirect(url_for('contact'))
+
+@app.route('/sign_page')
+def sign_page():
+    return render_template('sign_page.html', sign_up_error ="")
+
+@app.route('/sign_up', methods=['POST'])
+def sign_up():
+    # recuperer les informations
+    pseudo = request.form['pseudo']
+    email = request.form['email']
+    cellNum = request.form['cellNum']
+    password = request.form['Password']
+    entered_data = [pseudo, email, password, cellNum]
+
+    with open('suscriber.csv') as file:
+        file_data = file.readlines()
+        file_data = [info.strip('\n') for info in file_data]
+        file_data = [x.split(',') for x in file_data]
+    
+    for row in range(len(entered_data)):
+        for line in range(len(file_data)):
+            if entered_data[row] == file_data[line][row] and row != 2:
+                match row:
+                    case 0:
+                        sign_up_error = "pseudo déja pris"
+                    case 1:
+                        sign_up_error = "email déja utiliser pour un compte"
+                    case 3:
+                        sign_up_error = "un comte est deja assosié a un compte"
+
+                return render_template('sign_page.html', sign_up_error=sign_up_error)
+
+    with open('suscriber.csv', 'a', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(entered_data)
+
+    return redirect(url_for('sign_page'))
 
 @app.route('/filter_product', methods=['POST'])
 def filter_product():
@@ -63,6 +110,10 @@ def product_detailed(id):
     product_info = products_list[x]
     # passer info a la page html
     return render_template('product.detail.html', product=product_info)
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
