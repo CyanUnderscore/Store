@@ -7,6 +7,26 @@
         <option value="">Tous</option>
         <option value="cube">cube</option>
         <option value="sphere">sphere</option>
+        <option value="cône">cône</option>
+        <option value="polyèdre">polyèdre</option>
+        <option value="cylindre">cylindre</option>
+        <option value="tétraèdre">tétraèdre</option>
+        <option value="tore">tore</option>
+        <option value="dodécaèdre">dodécaèdre</option>
+    </select>
+    <input type="submit" value="Filter">
+</form>
+<form action="{{ url_for('order_product') }}" method="post">
+    <label for="category">order :</label>
+    <select name="category" id="category">
+        <option value="">Non</option>
+        <option value="price">prix</option>
+        <option value="score">score</option>
+    </select>
+    <select name="type" id="type">
+        <option value="">Tous</option>
+        <option value="+-">croissant</option>
+        <option value="-+">décroissant</option>
     </select>
     <input type="submit" value="Filter">
 </form>

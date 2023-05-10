@@ -80,6 +80,34 @@ def filter_product():
     selected_products = [x for x in product_list if x['category'] == category]
     return render_template('products.html', products=selected_products)
 
+@app.route('/order_product', methods=['POST'])
+def order_product():
+    category = request.form['category']
+    type = request.form['type']
+    product_list = toDico()
+    if category == "":
+        return render_template('products.html', products=product_list)
+    selected_products = []
+    maxId = 0
+    while len(product_list) != 0:
+        if type == "-+":
+            max = 0
+            for x in range(len(product_list)):
+                if float(product_list[x][category]) > max:
+                    max = float(product_list[x][category])
+                    maxId = x
+            selected_products.append(product_list[maxId])
+            product_list.pop(maxId)
+        else:
+            min = 1000
+            for x in range(len(product_list)):
+                if float(product_list[x][category]) < min:
+                    min = float(product_list[x][category])
+                    minId = x
+            selected_products.append(product_list[minId])
+            product_list.pop(minId)
+    return render_template('products.html', products=selected_products)
+
 def toDico():
     file = open("database.csv", "r")
     infos = file.readlines()
