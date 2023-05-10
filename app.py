@@ -44,7 +44,7 @@ def sign_up():
     pseudo = request.form['pseudo']
     email = request.form['email']
     cellNum = request.form['cellNum']
-    password = request.form['Password']
+    password = request.form['password']
     entered_data = [pseudo, email, password, cellNum]
 
     with open('suscriber.csv') as file:
@@ -82,7 +82,7 @@ def filter_product():
 
 @app.route('/order_product', methods=['POST'])
 def order_product():
-    category = request.form['category']
+    category = request.form['order']
     type = request.form['type']
     product_list = toDico()
     if category == "":
@@ -107,6 +107,23 @@ def order_product():
             selected_products.append(product_list[minId])
             product_list.pop(minId)
     return render_template('products.html', products=selected_products)
+
+
+@app.route('/search_product', methods=['POST'])
+def search_product():
+    search = request.form['search']
+    search = search.lower()
+    product_list = toDico()
+    if search == "":
+        return render_template('products.html', products=product_list)
+    selected_products = []
+    for product in product_list:
+        print(product)
+        for arg in product:
+            if search in str(product[arg]).lower():
+                selected_products.append(product)
+    return render_template('products.html', products=selected_products)
+
 
 def toDico():
     file = open("database.csv", "r")

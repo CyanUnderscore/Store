@@ -20,6 +20,9 @@
     {% if sign_up_error != "" %}
         <p style="color: red;">Erreur : {{ sign_up_error }}</p>
     {% endif %}
+    {% if sign_up_error == "" %}
+        <p style="color: rgb(0, 255, 0);">Compte creer avec succes</p>
+    {% endif %}
 </form>
  {% endblock %}
  

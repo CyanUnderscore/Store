@@ -1,35 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Nos Produits</h1>
-<form action="{{ url_for('filter_product') }}" method="post">
-    <label for="category">Categorie :</label>
-    <select name="category" id="category">
+<form action="{{ url_for('filter_product') }}" method="post" style="margin-bottom: 20px;">
+    <label for="category">Catégorie :</label>
+    <select name="category" id="category" style="margin-left: 5px; padding: 5px;">
         <option value="">Tous</option>
-        <option value="cube">cube</option>
-        <option value="sphere">sphere</option>
-        <option value="cône">cône</option>
-        <option value="polyèdre">polyèdre</option>
-        <option value="cylindre">cylindre</option>
-        <option value="tétraèdre">tétraèdre</option>
-        <option value="tore">tore</option>
-        <option value="dodécaèdre">dodécaèdre</option>
+        <option value="cube">Cube</option>
+        <option value="sphere">Sphere</option>
+        <option value="cône">Cône</option>
+        <option value="polyèdre">Polyèdre</option>
+        <option value="cylindre">Cylindre</option>
+        <option value="tétraèdre">Tétraèdre</option>
+        <option value="tore">Tore</option>
+        <option value="dodécaèdre">Dodécaèdre</option>
     </select>
-    <input type="submit" value="Filter">
+    <input type="submit" value="Filtrer" style="padding: 5px 10px; background-color: #ddd; border: none; cursor: pointer;">
 </form>
-<form action="{{ url_for('order_product') }}" method="post">
-    <label for="category">order :</label>
-    <select name="category" id="category">
+
+<form action="{{ url_for('order_product') }}" method="post" style="margin-bottom: 20px;">
+    <label for="order">Trier par :</label>
+    <select name="order" id="order" style="margin-left: 5px; padding: 5px;">
         <option value="">Non</option>
-        <option value="price">prix</option>
-        <option value="score">score</option>
+        <option value="price">Prix</option>
+        <option value="score">Score</option>
     </select>
-    <select name="type" id="type">
+    <select name="type" id="type" style="margin-left: 5px; padding: 5px;">
         <option value="">Tous</option>
-        <option value="+-">croissant</option>
-        <option value="-+">décroissant</option>
+        <option value="+-">Croissant</option>
+        <option value="-+">Décroissant</option>
     </select>
-    <input type="submit" value="Filter">
+    <input type="submit" value="Filtrer" style="padding: 5px 10px; background-color: #ddd; border: none; cursor: pointer;">
 </form>
+
+<form action="{{ url_for('search_product') }}" method="post">
+    <label for="search">Recherche :</label>
+    <input type="text" name="search" id="search" required style="margin-left: 5px; padding: 5px;">
+    <input type="submit" value="Rechercher" style="padding: 5px 10px; background-color: #ddd; border: none; cursor: pointer;">
+</form>
+
+
 <table style="border-spacing: 20px;">
     {% for product in products %}
     <tr>
