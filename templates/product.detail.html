@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <img src="{{ product.image }}" style="float: left; height: 45%;width: 45%;">
-<h1 style="margin-left: 5px;margin-top: 10px;">{{ product.name }}</h1>
-<p style="margin-left: 5px;margin-top: 10px;">{{ product.description }}</p>
-<p style="margin-left: 5px;margin-top: 10px;">Prix : {{ product.price }} euro</p>
+<div style="float: right;">
+    <h1 style="margin-left: 5px;margin-top: 10px;">{{ product.name }}</h1>
+    <p style="margin-left: 5px;margin-top: 10px;">{{ product.description }}</p>
+    <p style="margin-left: 5px;margin-top: 10px;">Prix : {{ product.price }} euro</p>
+</div>
+<p style="clear: left;">  </p>
 {% endblock %}
