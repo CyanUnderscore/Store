@@ -5,6 +5,7 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 
 @app.route('/')
 def home():
+    #the number of time the page has been visited
     #get the num
     file = open("site.csv", "r")
     content = file.readline()
@@ -15,7 +16,20 @@ def home():
     #change
     file.write(str(visit_num))
     file.close
-    return render_template('home.html', visit_num=visit_num)
+
+
+    top5_product=[]
+    product_list = toDico()
+
+    for loop in range(5):
+        max = 0
+        for x in range(len(product_list)):
+            if float(product_list[x]["score"]) > max:
+                max = float(product_list[x]["score"])
+                maxId = x
+        top5_product.append(product_list[maxId])
+        product_list.pop(maxId)
+    return render_template('home.html', visit_num=visit_num, top5_product=top5_product)
 
 @app.route('/contact')
 def contact():

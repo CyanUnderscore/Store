@@ -3,4 +3,26 @@
 <h1>Bienvenu sur Cube and Sphere</h1>
 <h2>votre site préferer d'achat pour vos forme géométrique</h2>
 <h3>cette page a été visité {{ visit_num }} fois</h3>
+<br>
+<br>
+<h1>
+    Les 5 produits les plus appréciés !
+</h1>
+<ul>
+    {% for product in top5_product %}
+    <li style="border: 5px solid rgb(255, 255, 255);">
+            <img src="{{ product['image'] }}" style="height: 20%; width: 20%; float: left;">
+        <div>
+            <a href="{{ url_for('product_detailed', id=product['id']) }}">{{ product['name'] }}</a>
+            <br>
+            <span style="margin-left: 5px;margin-top: 10px;">{{ product['description']}}</span>
+            <br>
+            <span style="margin-left: 5px; margin-top: 10px;">Prix : {{ product['price'] }} euro</span>
+            <br>
+            <span style="margin-left: 5px;margin-top: 10px;">Categorie : {{ product['category'] }}</span>
+        </div>
+        <p style="clear: left;"></p>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}
