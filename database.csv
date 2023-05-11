@@ -1,13 +1,13 @@
 id,name,description,price,image,score,category,VoteNum
-1,cube bleu, un cube bleu d’arréte 4cm qui est trés pratique si on a besion de cube bleu,10,/static/cube.png,4.6,cube,5
+1,cube bleu, un cube bleu d’arréte 4cm qui est trés pratique si on a besion de cube bleu,10,/static/cube.png,4.67,cube,6
 2,sphere blanche,c’est une balle blanche avec le numéro 2 dessus,5,/static/sphere.png,4.5,sphere,46
 3,Cube d’Escher,Un cube qui casse votre cerveau et les loi de la physique,25,/static/EscherCube.png,4.8,cube,12
 4,Balle d’illusion,voyer le monde sous un nouvel angle,45,/static/illBall.png,4.7,sphere,24
 5,Cône rouge,un cône rouge de hauteur 8cm avec un rayon de 5cm à la base,15,/static/cone.png,4.2,cône,8
 6,Polyèdre en bois,un polyèdre en bois avec des faces pentagonales et hexagonales,30,/static/polyhedron.png,4.6,polyèdre,10
 7,Cylindre argenté,un cylindre argenté de hauteur 10cm et de rayon 3cm,12,/static/cylinder.png,4.3,cylindre,6
-8,Tétraèdre transparent,un tétraèdre transparent avec des arêtes de longueur 6cm,20,/static/tetrahedron.png,4.9,tétraèdre,15
-9,Pyramide argenté,une pyramide argenté avec une base carrée de côté 7cm et une hauteur de 9cm,18,/static/pyramid.png,4.7,pyramide,9
+8,Tétraèdre transparent,un tétraèdre transparent avec des arêtes de longueur 6cm,20,/static/tetrahedron.png,4.78,tétraèdre,16
+9,Pyramide argenté,une pyramide argenté avec une base carrée de côté 7cm et une hauteur de 9cm,18,/static/pyramid.png,4.89,pyramide,31
 10,Sphère blue,une sphère bleu,8,/static/rainbow-sphere.png,4.4,sphère,14
 11,Cube en acier,un cube en acier inoxydable de côté 6cm,32,/static/steel-cube.png,4.6,cube,11
 12,Cône bleu marine,un cône bleu marine de hauteur 12cm avec un rayon de 3cm à la base,22,/static/navy-blue-cone.png,4.3,cône,7

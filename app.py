@@ -156,6 +156,15 @@ def search_product():
     return render_template('products.html', products=selected_products)
 
 
+@app.route('/buy/<id>', methods=['POST'])
+def buy(id):
+    products_list = toDico()
+    x = 0
+    while products_list[x]['id'] != id and x <= len(products_list):
+        x+=1
+    product_info = products_list[x]
+    return render_template('buy.html', product=product_info)
+
 def toDico():
     file = open("database.csv", "r")
     infos = file.readlines()

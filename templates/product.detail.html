@@ -18,5 +18,9 @@
     </select>
     <input type="submit" value="Noter" style="padding: 5px 10px; background-color: #ddd; border: none; cursor: pointer;">
 </form>
+<br>
+<form action="{{ url_for('buy', id=product.id) }}" method="post" style="float: right;">
+    <input type="submit" value="Acheter" style="padding: 5px 10px; background-color: #ddd; border: none; cursor: pointer;">
+</form>
 <p style="clear: left;">  </p>
 {% endblock %}
