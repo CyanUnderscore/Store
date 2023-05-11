@@ -5,6 +5,18 @@
     <h1 style="margin-left: 5px;margin-top: 10px;">{{ product.name }}</h1>
     <p style="margin-left: 5px;margin-top: 10px;">{{ product.description }}</p>
     <p style="margin-left: 5px;margin-top: 10px;">Prix : {{ product.price }} euro</p>
+    <p style="margin-left: 5px;margin-top: 10px; font-size: 25px;">Score : {{ product.score }} / 5</p>
 </div>
+<form action="{{ url_for('note', id=product.id) }}" method="post" style="float: right;">
+    <label for="note">Noter le produits :</label>
+    <select name="note" id="note" style="margin-left: 5px; padding: 5px;">
+        <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+    </select>
+    <input type="submit" value="Noter" style="padding: 5px 10px; background-color: #ddd; border: none; cursor: pointer;">
+</form>
 <p style="clear: left;">  </p>
 {% endblock %}

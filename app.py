@@ -123,6 +123,23 @@ def order_product():
     return render_template('products.html', products=selected_products)
 
 
+@app.route('/note/<id>', methods=['POST'])
+def note(id):
+    new_note = request.form['note']
+    products_list = toDico()
+    x = 0
+    while products_list[x]['id'] != id and x <= len(products_list):
+        x+=1
+    product = products_list[x]
+    note_updated = round((float(product['score']) * float(product['VoteNum']) + float(new_note)) / (float(product['VoteNum']) + 1), 2)
+    product['VoteNum'] = str(int(product['VoteNum']) + 1)
+    product['score'] = note_updated
+    products_list[x] = product
+    rewrite_csv(product_list=products_list)
+    return render_template('product.detail.html', product=product)
+    
+
+
 @app.route('/search_product', methods=['POST'])
 def search_product():
     search = request.form['search']
@@ -134,7 +151,7 @@ def search_product():
     for product in product_list:
         print(product)
         for arg in product:
-            if search in str(product[arg]).lower():
+            if search in str(product[arg]).lower() and product not in selected_products:
                 selected_products.append(product)
     return render_template('products.html', products=selected_products)
 
@@ -153,6 +170,14 @@ def toDico():
         dico = {labels[x] : product[x] for x in range(len(product))}
         products_list.append(dico)
     return products_list
+
+def rewrite_csv(product_list):
+    with open("database.csv", "w") as file:
+        writer = csv.writer(file)
+        writer.writerow(["id","name","description","price","image","score","category","VoteNum"])
+        for product in product_list:
+             writer.writerow([product["id"],product["name"],product["description"],product["price"],product["image"],product["score"],product["category"],product["VoteNum"]])
+
 
 @app.route('/products')
 def products():
